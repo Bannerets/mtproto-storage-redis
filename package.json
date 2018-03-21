@@ -1,6 +1,6 @@
 {
   "name": "mtproto-storage-redis",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Save telegram-mtproto session into redis hash",
   "main": "dist/index.js",
   "scripts": {
