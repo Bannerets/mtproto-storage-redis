@@ -22,13 +22,12 @@ export class RedisStorage implements AsyncStorage {
   async get (key: string): Promise<any> {
     // log('get', `key ${key}`)
     const val = await this.redis.hget(this.hash, key)
-    if (key === 'dc') return Number(val)
-    return val
+    return JSON.parse(val)
   }
 
   async set (key: string, val: any): Promise<void> {
     // log('set', `key ${key}`)(val)
-    await this.redis.hset(this.hash, key, val)
+    await this.redis.hset(this.hash, key, JSON.stringify(val))
   }
 
   async has (key: string): Promise<boolean> {
