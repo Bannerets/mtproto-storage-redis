@@ -1,0 +1,34 @@
+{
+  "name": "mtproto-storage-redis",
+  "version": "0.1.0",
+  "description": "Save telegram-mtproto session into redis hash",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rimraf dist/",
+    "types": "flow-copy-source src dist",
+    "build": "babel src/ -d dist/ && npm run types",
+    "test": "flow .",
+    "prepublish": "npm test && npm run clean && npm run build",
+    "start": "node dist"
+  },
+  "files": [
+    ".flowconfig",
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "ioredis": "^3.2.2",
+    "mtproto-logger": "^0.1.9",
+    "mtproto-shared": "^0.1.8"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
+    "flow-bin": "^0.66.0",
+    "flow-copy-source": "^1.3.0",
+    "rimraf": "^2.6.2"
+  },
+  "author": "Bannerets <save14@protonmail.com>",
+  "license": "MIT"
+}
