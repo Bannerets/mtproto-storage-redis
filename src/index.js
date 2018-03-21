@@ -15,12 +15,15 @@ export class RedisStorage implements AsyncStorage {
     redisOptions?: RedisOptions,
     redisInstance?: Redis
   ) {
+    this.hash = hash
     this.redis = redisInstance || new Redis(redisOptions)
   }
 
-  get (key: string): Promise<any> {
+  async get (key: string): Promise<any> {
     // log('get', `key ${key}`)
-    return this.redis.hget(this.hash, key)
+    const val = await this.redis.hget(this.hash, key)
+    if (key === 'dc') return Number(val)
+    return val
   }
 
   async set (key: string, val: any): Promise<void> {
